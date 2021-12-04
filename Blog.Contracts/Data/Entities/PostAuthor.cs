@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Blog.Contracts.Data.Entities
 {
-    public class Author : BaseEntity
+    public class PostAuthor : BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Address { get; set; } 
     }
 }

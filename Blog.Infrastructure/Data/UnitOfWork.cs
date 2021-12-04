@@ -20,7 +20,8 @@ namespace Blog.Infrastructure.Data
         }
         public IPostRepository Posts => new PostRepository(_context);
         public ICommentRepository Comments => new CommentRepository(_context);
-        public IAuthorRepository Authors => new AuthorRepository(_context);
+        public IPostAuthorRepository PostAuthors => new PostAuthorRepository(_context);
+        public ICommentAuthorRepository CommentAuthors => new CommentAuthorRepository(_context);
 
         public async Task CommitAsync()
         {

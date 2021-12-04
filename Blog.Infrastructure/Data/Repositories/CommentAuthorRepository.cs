@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Data.Repositories
 {
-    public class AuthorRepository : Repository<Author>, IAuthorRepository
+    public class CommentAuthorRepository : Repository<CommentAuthor>, ICommentAuthorRepository
     {
-        public AuthorRepository(BlogDbContext context) : base(context)
+        public CommentAuthorRepository(BlogDbContext context) : base(context)
         {
         }
     }

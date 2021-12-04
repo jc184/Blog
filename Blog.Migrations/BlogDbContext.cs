@@ -27,6 +27,7 @@ namespace Blog.Migrations
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Author> Author { get; set; }
+        public DbSet<PostAuthor> PostAuthors { get; set; }
+        public DbSet<CommentAuthor> CommentAuthors { get; set; }
     }
 }

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Contracts.Data.Repositories
 {
-    public interface IAuthorRepository : IRepository<Author>
+    public interface IPostAuthorRepository : IRepository<PostAuthor>
     {
     }
-   
 }

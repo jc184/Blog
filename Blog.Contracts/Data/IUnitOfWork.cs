@@ -11,7 +11,8 @@ namespace Blog.Contracts.Data
     {
         IPostRepository Posts { get; }
         ICommentRepository Comments { get; }
-        IAuthorRepository Authors { get; }
+        IPostAuthorRepository PostAuthors { get; }
+        ICommentAuthorRepository CommentAuthors { get; }
         Task CommitAsync();
     }
 }
