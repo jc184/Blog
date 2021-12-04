@@ -11,7 +11,7 @@ namespace Blog.Contracts.Data.Entities
         public string Title { get; set; }
         public string Body { get; set; } 
         public string Status { get; set; }
-        public PostAuthor PostAuthor { get; set; }
+        public PostAuthor? PostAuthor { get; set; }
         public ICollection<Comment> Comments { get; set;}
 
     }

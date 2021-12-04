@@ -9,6 +9,6 @@ namespace Blog.Contracts.Data.Entities
     public class Comment : BaseEntity
     {
         public string Content { get; set; }
-        public Author Author { get; set; }
+        public CommentAuthor? CommentAuthor { get; set; }
     }
 }
