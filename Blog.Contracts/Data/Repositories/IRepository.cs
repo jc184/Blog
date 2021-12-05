@@ -8,7 +8,8 @@ namespace Blog.Contracts.Data.Repositories
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetAll();
+        //IEnumerable<T> GetAll();
+        IQueryable<T> GetAll();
         T Get(object id);
         void Add(T entity);
         void Update(T entity);

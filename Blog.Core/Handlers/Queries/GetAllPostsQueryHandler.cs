@@ -2,6 +2,7 @@
 using Blog.Contracts.Data;
 using Blog.Contracts.DTO;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Blog.Core.Handlers.Queries
 
         public async Task<IEnumerable<PostDTO>> Handle(GetAllPostsQuery request, CancellationToken cancellationToken)
         {
-            var entities = await Task.FromResult(_repository.Posts.GetAll());
+            var entities = await Task.FromResult(_repository.Posts.GetAll().Include(x => x.Comments).ToList());
             return _mapper.Map<IEnumerable<PostDTO>>(entities);
         }
     }

@@ -49,9 +49,10 @@ namespace Blog.Infrastructure.Data.Repositories.Generic
             return x;
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return _dbSet.AsEnumerable();
+            //return _dbSet.AsEnumerable();
+            return _dbSet as IQueryable<T>;
         }
 
         public void Update(T entity)
