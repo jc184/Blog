@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Blog.Core.Validators
 {
-    public class NullReferenceAbstractValidator<CreateCommentDTO> : AbstractValidator<CreateCommentDTO>
+    public class NullReferenceAbstractValidator<T> : AbstractValidator<T>
     {
-        public ValidationResult Validate(CreateCommentDTO instance)
+        public ValidationResult Validate(T instance)
         {
             return instance == null
                 ? new ValidationResult(new[] { new ValidationFailure(instance.ToString(), "response cannot be null", "Error") })
