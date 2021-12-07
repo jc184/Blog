@@ -25,6 +25,12 @@ namespace Blog.Migrations
             return base.SaveChangesAsync(cancellationToken);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>()
+                .HasMany(b => b.Comments);
+        }
+
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
 

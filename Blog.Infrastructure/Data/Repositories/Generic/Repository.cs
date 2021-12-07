@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,12 @@ namespace Blog.Infrastructure.Data.Repositories.Generic
             return x;
         }
 
+        public T GetByIdInclude(int id, params Expression<Func<T, object>>[] includes)
+        {
+            var entry = _dbSet.Include("Comments").FirstOfDefaultIdEquals(id);
+            return entry;
+        }
+
         public IQueryable<T> GetAll()
         {
             //return _dbSet.AsEnumerable();
@@ -62,3 +69,5 @@ namespace Blog.Infrastructure.Data.Repositories.Generic
         }
     }
 }
+
+

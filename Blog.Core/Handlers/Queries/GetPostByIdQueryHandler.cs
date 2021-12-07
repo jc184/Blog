@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Contracts.Data;
+using Blog.Contracts.Data.Entities;
 using Blog.Contracts.DTO;
 using Blog.Core.Exceptions;
 using MediatR;
@@ -15,6 +16,7 @@ namespace Blog.Core.Handlers.Queries
     public class GetPostByIdQuery : IRequest<PostDTO>
     {
         public int PostId { get; }
+
         public GetPostByIdQuery(int postId)
         {
             PostId = postId;
@@ -34,7 +36,7 @@ namespace Blog.Core.Handlers.Queries
 
         public async Task<PostDTO> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
-            var post = await Task.FromResult(_repository.Posts.Get(request.PostId));
+            var post = await Task.FromResult(_repository.Posts.GetByIdInclude(request.PostId));
 
             if (post == null)
             {
@@ -45,3 +47,4 @@ namespace Blog.Core.Handlers.Queries
         }
     }
 }
+
