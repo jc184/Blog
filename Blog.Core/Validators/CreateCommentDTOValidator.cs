@@ -1,5 +1,7 @@
-﻿using Blog.Contracts.DTO;
+﻿using Blog.Contracts.Data.Entities;
+using Blog.Contracts.DTO;
 using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Core.Validators
 {
-    public class CreateCommentDTOValidator : AbstractValidator<CreateCommentDTO>
+    public class CreateCommentDTOValidator : NullReferenceAbstractValidator<CreateCommentDTO>
     {
         public CreateCommentDTOValidator()
         {
