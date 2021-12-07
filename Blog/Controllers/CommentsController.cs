@@ -73,5 +73,27 @@ namespace Blog.API.Controllers
                 });
             }
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var command = new DeleteCommentCommand(id);
+                var response = await _mediator.Send(command);
+                return StatusCode((int)HttpStatusCode.OK, response);
+            }
+            catch (InvalidRequestBodyException ex)
+            {
+                return BadRequest(new BaseResponseDTO
+                {
+                    IsSuccess = false,
+                    Errors = ex.Errors
+                });
+            }
+        }
     }
 }

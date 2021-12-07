@@ -51,7 +51,7 @@ namespace Blog.API
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CQRS Ninja API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CQRS Blog API v1");
             });
 
             app.UseRouting();
