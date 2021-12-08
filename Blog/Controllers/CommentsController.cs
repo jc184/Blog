@@ -95,5 +95,27 @@ namespace Blog.API.Controllers
                 });
             }
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        public async Task<IActionResult> Update([FromBody] UpdateCommentDTO model, int id)
+        {
+            try
+            {
+                var command = new UpdateCommentCommand(model, id);
+                var response = await _mediator.Send(command);
+                return StatusCode((int)HttpStatusCode.OK, response);
+            }
+            catch (InvalidRequestBodyException ex)
+            {
+                return BadRequest(new BaseResponseDTO
+                {
+                    IsSuccess = false,
+                    Errors = ex.Errors
+                });
+            }
+        }
     }
 }

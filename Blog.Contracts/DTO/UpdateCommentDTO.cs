@@ -12,6 +12,7 @@ namespace Blog.Contracts.DTO
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public DateTime AddedOn { get; set; }
         public int PostId { get; set; }
     }
 }
