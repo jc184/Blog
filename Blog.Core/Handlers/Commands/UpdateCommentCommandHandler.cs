@@ -66,13 +66,6 @@ namespace Blog.Core.Handlers.Commands
 
                 return entityToUpdate.Id;
             }
-            //var entity = new Comment
-            //{
-            //    Content = model.Content,
-            //    FirstName = model.FirstName,
-            //    LastName = model.LastName,
-            //    Email = model.Email,
-            //    PostId = model.PostId,
 
         }
     }
