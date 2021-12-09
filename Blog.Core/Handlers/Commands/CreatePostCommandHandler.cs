@@ -56,7 +56,7 @@ namespace Blog.Core.Handlers.Commands
                 LastName = model.LastName,
                 Email = model.Email,
 
-    };
+            };
 
             _repository.Posts.Add(entity);
             await _repository.CommitAsync();

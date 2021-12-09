@@ -55,7 +55,7 @@ namespace Blog.Core.Handlers.Commands
                 Email = model.Email,
                 PostId = model.PostId,
 
-    };
+            };
 
             _repository.Comments.Add(entity);
             await _repository.CommitAsync();

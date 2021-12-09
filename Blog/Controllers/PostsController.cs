@@ -9,18 +9,27 @@ using System.Net;
 
 namespace Blog.API.Controllers
 {
-
+    /// <summary>
+    /// Posts Controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
+        /// <summary>
+        /// Constructor for Posts Controller
+        /// </summary>
         public PostsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Retrieves all posts with related comments
+        /// </summary>
+        /// <response code="200">Posts retrieved</response>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<PostDTO>), (int)HttpStatusCode.OK)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
@@ -31,6 +40,11 @@ namespace Blog.API.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Creates a new post
+        /// </summary>
+        /// <response code="201">Post added</response>
+        /// <response code="400">Bad Request</response>
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.Created)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
@@ -52,6 +66,11 @@ namespace Blog.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves a specific post by id including related comments
+        /// </summary>
+        /// <response code="200">Post retrieved</response>
+        /// <response code="404">Post not found</response>
         [HttpGet]
         [Route("{id}")]
         [ProducesResponseType(typeof(PostDTO), (int)HttpStatusCode.OK)]
@@ -74,6 +93,11 @@ namespace Blog.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a post
+        /// </summary>
+        /// <response code="200">Post deleted</response>
+        /// <response code="400">Bad Request</response>
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
@@ -96,6 +120,11 @@ namespace Blog.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates a post
+        /// </summary>
+        /// <response code="200">Post updated</response>
+        /// <response code="400">Bad Request</response>
         [HttpPut]
         [Route("{id}")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
