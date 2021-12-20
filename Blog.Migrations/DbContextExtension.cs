@@ -20,11 +20,9 @@ namespace Blog.Migrations
             var lambda = Expression.Lambda<Func<TEntity, bool>>(equal, parameter);
             return source.FirstOrDefault(lambda);
         }
-        public static TEntity FirstOfDefaultIdEquals<TEntity>(
-            this ObservableCollection<TEntity> source, TEntity enity)
-            where TEntity : class
+        public static TEntity FirstOfDefaultIdEquals<TEntity>(this ObservableCollection<TEntity> source, TEntity entity) where TEntity : class
         {
-            var value = (int)enity.GetType().GetProperty("ID").GetValue(enity, null);
+            var value = (int)entity.GetType().GetProperty("ID").GetValue(entity, null);
             var parameter = Expression.Parameter(typeof(TEntity), "x");
             var property = Expression.Property(parameter, "ID");
             var equal = Expression.Equal(property, Expression.Constant(value));
