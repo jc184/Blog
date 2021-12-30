@@ -48,6 +48,8 @@ namespace Blog.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.Created)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Post([FromBody] CreateCommentDTO model)
         {
             try
@@ -75,6 +77,8 @@ namespace Blog.API.Controllers
         [Route("{id}")]
         [ProducesResponseType(typeof(CommentDTO), (int)HttpStatusCode.OK)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -102,6 +106,8 @@ namespace Blog.API.Controllers
         [Route("{id}")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -129,6 +135,8 @@ namespace Blog.API.Controllers
         [Route("{id}")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
         [ProducesErrorResponseType(typeof(BaseResponseDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> Update([FromBody] UpdateCommentDTO model, int id)
         {
             try
