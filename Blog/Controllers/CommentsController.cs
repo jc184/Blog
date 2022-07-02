@@ -3,7 +3,6 @@ using Blog.Core.Exceptions;
 using Blog.Core.Handlers.Commands;
 using Blog.Core.Handlers.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
