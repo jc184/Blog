@@ -2,12 +2,6 @@
 using Blog.Contracts.Data;
 using Blog.Contracts.DTO;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Core.Handlers.Queries
 {
