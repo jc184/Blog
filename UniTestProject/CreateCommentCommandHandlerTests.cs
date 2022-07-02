@@ -6,20 +6,15 @@ using Blog.Core.Handlers.Commands;
 using FluentValidation;
 using MediatR;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace UniTestProject
+namespace UnitTestProject
 {
     public class CreateCommentCommandHandlerTests
     {
         [Fact]
         public async Task Handle_Returns_Int()
         {
+            //Arrange
             var mockRepo = new Mock<IUnitOfWork>();
             mockRepo.Setup(x => x.Comments.Add(It.IsAny<Comment>()));
             var mockValidator = new Mock<IValidator<CreateCommentDTO>>();
@@ -29,6 +24,7 @@ namespace UniTestProject
             mockValidator.Setup(x => x.Validate(It.IsAny<CreateCommentDTO>())).Returns(value);
 
             var mediator = new Mock<IMediator>();
+            //Act
             var handler = new CreateCommentCommandHandler(mockRepo.Object, mockValidator.Object);
             var model = new CreateCommentDTO() { Content = "Test", FirstName = "TestName", LastName = "TestName", Email = "jc123@gmail.com", PostId = 1 };
             var request = new CreateCommentCommand(model);
@@ -40,7 +36,7 @@ namespace UniTestProject
 
             var result = await handler.Handle(new CreateCommentCommand(requestModel), CancellationToken.None);
 
-            Assert.NotNull(result);
+            //Assert
             Assert.IsType<int>(result);
             Assert.Equal(0, result);
         }
