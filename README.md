@@ -1,5 +1,6 @@
 # Blog
-An ASP.NET 6.0 Web API for a simple blog using the Repository, Unit of Work, and CQRS patterns
+An ASP.NET 6.0 Web API for a simple blog using the Repository, Unit of Work, and CQRS patterns. I have also included Unit Tests for
+the Controller methods, Command Handlers and Queries.
 
 ## Support :telephone:
 
