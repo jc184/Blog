@@ -3,11 +3,6 @@ using Blog.Contracts.Data.Entities;
 using Blog.Core.Handlers.Commands;
 using MediatR;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestProject
 {

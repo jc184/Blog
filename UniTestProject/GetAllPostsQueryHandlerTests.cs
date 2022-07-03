@@ -4,11 +4,6 @@ using Blog.Contracts.DTO;
 using Blog.Core.Handlers.Queries;
 using MediatR;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
