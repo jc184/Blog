@@ -5,11 +5,6 @@ using Blog.Contracts.DTO;
 using Blog.Core.Handlers.Queries;
 using MediatR;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestProject
 {
@@ -33,7 +28,6 @@ namespace UnitTestProject
             int commentId = 1;
             var request = new GetCommentByIdQuery(commentId);
             var comment = await Task.FromResult(mockRepo.Object.Comments.Get(request.CommentId));
-            //var mappedComment = mockMapper.Object.Map(mockRepo.Object, comment);
             mockMapper.Object.Map<CommentDTO>(comment);
             var result = await handler.Handle(new GetCommentByIdQuery(comment.Id), CancellationToken.None);
 

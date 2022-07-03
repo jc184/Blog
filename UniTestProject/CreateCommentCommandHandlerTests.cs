@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Blog.Contracts.Data;
+﻿using Blog.Contracts.Data;
 using Blog.Contracts.Data.Entities;
 using Blog.Contracts.DTO;
 using Blog.Core.Handlers.Commands;

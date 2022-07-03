@@ -28,7 +28,6 @@ namespace UnitTestProject
             int postId = 1;
             var request = new GetPostByIdQuery(postId);
             var post = await Task.FromResult(mockRepo.Object.Posts.GetByIdInclude(request.PostId));
-            //var mappedComment = mockMapper.Object.Map(mockRepo.Object, comment);
             mockMapper.Object.Map<PostDTO>(post);
             var result = await handler.Handle(new GetPostByIdQuery(post.Id), CancellationToken.None);
 
