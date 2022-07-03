@@ -27,6 +27,16 @@ namespace UnitTestProject
         }
 
         [Fact]
+        public async Task Post_throws_exception_when_RequestBody_Invalid()
+        {
+            var mediator = new Mock<IMediator>();
+            var controller = new CommentsController(mediator.Object);
+            var model = new CreateCommentDTO() { Content = null, Email = null, FirstName = null, LastName = null, PostId = 0 };
+            var result = await controller.Post(model);
+            _ = Assert.ThrowsAsync<InvalidRequestBodyException>(async () => await controller.Post(model));
+        }
+
+        [Fact]
         public async Task GetAll_returns_OkResult()
         {
             var mediator = new Mock<IMediator>();
@@ -53,6 +63,15 @@ namespace UnitTestProject
         }
 
         [Fact]
+        public async Task GetById_throws_exception_when_EntityNotFound()
+        {
+            var mediator = new Mock<IMediator>();
+            var controller = new CommentsController(mediator.Object);
+            var result = await controller.GetById(1);
+            _ = Assert.ThrowsAsync<EntityNotFoundException>(async () => await controller.GetById(1));
+        }
+
+        [Fact]
         public async Task Delete_Returns_ObjectResult()
         {
             var mediator = new Mock<IMediator>();
@@ -63,6 +82,16 @@ namespace UnitTestProject
             Assert.IsType<ObjectResult>(result);
             Assert.NotNull(result);
             Assert.Equal(200, okResult?.StatusCode);
+        }
+
+        [Fact]
+        public async Task Delete_throws_exception_when_RequestBody_Invalid()
+        {
+            var mediator = new Mock<IMediator>();
+            var controller = new CommentsController(mediator.Object);
+            int id = 0;
+            var result = await controller.Delete(id);
+            _ = Assert.ThrowsAsync<InvalidRequestBodyException>(async () => await controller.Delete(id));
         }
 
         [Fact]
@@ -79,6 +108,17 @@ namespace UnitTestProject
             Assert.Equal(200, okResult?.StatusCode);
         }
 
+        [Fact]
+        public async Task Update_throws_exception_when_RequestBody_Invalid()
+        {
+            var mediator = new Mock<IMediator>();
+            var controller = new CommentsController(mediator.Object);
+            var model = new UpdateCommentDTO() { Content = null, Email = null, FirstName = null, LastName = null, PostId = 0 };
+            int id = 1;
+            var result = await controller.Update(model, id);
+            _ = Assert.ThrowsAsync<InvalidRequestBodyException>(async () => await controller.Update(model, id));
+        }
+            
         [Fact]
         public void Post_SendsQueryWithTheCorrectData()
         {
