@@ -35,7 +35,7 @@ namespace UnitTestProject
         {
             var mediator = new Mock<IMediator>();
             var controller = new PostsController(mediator.Object);
-            var model = new CreatePostDTO() { Body = "Test", Email = "js123@gmail.com", FirstName = "John", LastName = "Smith", Status = "", Title = "" };
+            var model = new CreatePostDTO() { Body = null, Email = null, FirstName = null, LastName = null, Status = null, Title = null };
             var result = await controller.Post(model);
             _ = Assert.ThrowsAsync<InvalidRequestBodyException>(async () => await controller.Post(model));
         }
@@ -117,7 +117,7 @@ namespace UnitTestProject
         {
             var mediator = new Mock<IMediator>();
             var controller = new PostsController(mediator.Object);
-            var model = new UpdatePostDTO() { Body = "Test", Email = "js123@gmail.com", FirstName = "John", LastName = "Smith", Status = "", Title = "" };
+            var model = new UpdatePostDTO() { Body = null, Email = null, FirstName = null, LastName = null, Status = null, Title = null };
             int id = 1;
             var result = await controller.Update(model, id);
             _ = Assert.ThrowsAsync<InvalidRequestBodyException>(async () => await controller.Update(model, id));
@@ -126,7 +126,6 @@ namespace UnitTestProject
         [Fact]
         public void Post_SendsQueryWithTheCorrectData()
         {
-
             var model = new CreatePostDTO() { Body = "Test", Email = "js123@gmail.com", FirstName = "John", LastName = "Smith", Status = "", Title = "" };
             var mediator = new Mock<IMediator>();
             var sut = new PostsController(mediator.Object);
